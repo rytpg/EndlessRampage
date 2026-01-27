@@ -14,9 +14,10 @@ public class PlayerController : MonoBehaviour
     Vector2 movementInput;
     Rigidbody2D rb;
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
-    bool canMove = true;
     Animator animator;
     SpriteRenderer spriteRenderer;
+
+    bool canMove = true;
 
 
 
@@ -88,5 +89,20 @@ public class PlayerController : MonoBehaviour
         movementInput = movementValue.Get<Vector2>();
         
         
+    }
+
+    void OnAttack()
+    {
+        animator.SetTrigger("swordAttack1");
+    }
+
+    public void LockMovement()
+    {
+        canMove = false;
+    }
+
+    public void UnlockMovement()
+    {
+        canMove = true;
     }
 }
