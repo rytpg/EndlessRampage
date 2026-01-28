@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 5597695185407315817}
   - component: {fileID: 8610613282462762723}
   - component: {fileID: 2610687629014822490}
+  - component: {fileID: 4767961767963697254}
+  - component: {fileID: 8631052106744134167}
   m_Layer: 0
   m_Name: Skeleton
   m_TagString: Enemy
@@ -229,3 +231,29 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &4767961767963697254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6218143083039659868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09062f10f33a5a84fbb665a79765050b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8631052106744134167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6218143083039659868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b48baafd5bae1634c9cc440526d5f8ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 1
+  collisionOffset: 2
