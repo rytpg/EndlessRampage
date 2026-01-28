@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class SwordAttack : MonoBehaviour
 {
+    public float damage = 1f;
+
+
     private Collider2D swordCollider;
     private Vector2 rightLocalOffset;
 
@@ -32,9 +35,13 @@ public class SwordAttack : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemy"))
-        {
+        if (!collision.CompareTag("Enemy")) return;
 
+        HealthManager health = collision.GetComponent<HealthManager>();
+        if(health != null)
+        {
+            health.TakeDamage(damage);
         }
+
     }
 }
