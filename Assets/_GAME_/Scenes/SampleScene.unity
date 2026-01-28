@@ -119,6 +119,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &233247281 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3093835683703382969, guid: e8ab3f62f77adca499e4424b8df6ed8b, type: 3}
+  m_PrefabInstance: {fileID: 8793976548251611736}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4e62b9dd3decf54aac6758ad992c788, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &490548771
 GameObject:
   m_ObjectHideFlags: 0
@@ -51126,8 +51137,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5597695185407315817, guid: 31573acaac91c974ea5d1b99cd3f4902, type: 3}
+      propertyPath: m_Size.x
+      value: 1.0836563
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597695185407315817, guid: 31573acaac91c974ea5d1b99cd3f4902, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597695185407315817, guid: 31573acaac91c974ea5d1b99cd3f4902, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.33317184
       objectReference: {fileID: 0}
     - target: {fileID: 6218143083039659868, guid: 31573acaac91c974ea5d1b99cd3f4902, type: 3}
       propertyPath: m_Name
@@ -51170,6 +51189,10 @@ PrefabInstance:
       propertyPath: m_Interpolate
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3623593885082004714, guid: e8ab3f62f77adca499e4424b8df6ed8b, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3927279591469459661, guid: e8ab3f62f77adca499e4424b8df6ed8b, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 1.625
@@ -51182,10 +51205,18 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 4383580925326978052, guid: e8ab3f62f77adca499e4424b8df6ed8b, type: 3}
+      propertyPath: m_Name
+      value: SwordHitbox
+      objectReference: {fileID: 0}
     - target: {fileID: 5081722831858225331, guid: e8ab3f62f77adca499e4424b8df6ed8b, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6132673868515292399, guid: e8ab3f62f77adca499e4424b8df6ed8b, type: 3}
+      propertyPath: swordAttack
+      value: 
+      objectReference: {fileID: 233247281}
     - target: {fileID: 7394277820787067897, guid: e8ab3f62f77adca499e4424b8df6ed8b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 62.77
