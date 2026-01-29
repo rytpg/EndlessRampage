@@ -10,6 +10,8 @@ public class EnemyMovement : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Animator animator;
 
+    private bool isDead = false;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -27,6 +29,14 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
+        if(isDead || player == null)
+        {
+            rb.linearVelocity = Vector2.zero;
+            animator.SetBool("isMoving", false);
+            return;
+        }
+
+
         Vector2 directionToPlayer = (Vector2)player.position - rb.position;
         float distance = directionToPlayer.magnitude;
         
@@ -47,4 +57,16 @@ public class EnemyMovement : MonoBehaviour
         }
 
     }
+
+    public void OnDeath()
+    {
+        isDead = true;
+        //Incase enemy moves for 1 frame, before update() hits
+        rb.linearVelocity = Vector2.zero;
+        animator.SetBool("isMoving", false);
+        
+    }
+
+
+
 }
