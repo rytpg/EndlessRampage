@@ -20,6 +20,9 @@ public class PlayerController : MonoBehaviour
 
     bool canMove = true;
 
+    [SerializeField] private Transform visuals;
+    private int facingDirection = 1; // 1 = right, 0 = left
+
 
 
 
@@ -27,8 +30,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponentInChildren<Animator>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         
     }
 
@@ -55,9 +58,15 @@ public class PlayerController : MonoBehaviour
 
             // Set direction of sprite to movement direction
             if(movementInput.x < 0) {
-                spriteRenderer.flipX = true;
+                facingDirection = -1;
+                Vector3 s = visuals.localScale;
+                s.x = -1;
+                visuals.localScale = s;
             } else if (movementInput.x > 0) {
-                spriteRenderer.flipX = false;
+                facingDirection = 1;
+                Vector3 s = visuals.localScale;
+                s.x = 1;
+                visuals.localScale = s;
             }
         }
     }
@@ -100,7 +109,7 @@ public class PlayerController : MonoBehaviour
     public void SwordAttack()
     {
         LockMovement();
-        if(spriteRenderer.flipX == true)
+        if(facingDirection == -1)
         {
             swordAttack.AttackLeft();
         }
