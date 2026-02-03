@@ -10,13 +10,16 @@ public class EnemyMovement : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Animator animator;
 
+    [SerializeField] private Transform visuals;
+    private int facingDirection = 1; // 1 = right, -1 = left
+
     private bool isDead = false;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        animator = GetComponentInChildren<Animator>();
 
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if(playerObj != null)
@@ -51,9 +54,20 @@ public class EnemyMovement : MonoBehaviour
         rb.linearVelocity = direction * moveSpeed;
         animator.SetBool("isMoving", true);
 
-        if(spriteRenderer != null)
+        if(direction.x < 0 && facingDirection != -1)
         {
-            spriteRenderer.flipX = (direction.x < 0);
+            facingDirection = -1;
+            Vector3 s = visuals.localScale;
+            s.x = -1;
+            visuals.localScale = s;
+        }
+        else if(direction.x > 0 && facingDirection != 1)
+        {
+            facingDirection = 1;
+            Vector3 s = visuals.localScale;
+            s.x = 1;
+            visuals.localScale = s;
+            
         }
 
     }

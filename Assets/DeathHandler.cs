@@ -17,7 +17,7 @@ private Animator animator;
 
     public void DestroySelf()
     {
-        Destroy(gameObject);
+        Destroy(transform.root.gameObject);
     }
 
 }
