@@ -303,7 +303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1
-  collisionOffset: 0.3
+  collisionOffset: 0
   visuals: {fileID: 8389427985926575244}
 --- !u!1 &6334191866946533871
 GameObject:
