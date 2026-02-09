@@ -361,17 +361,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3630007308879794452, guid: 31573acaac91c974ea5d1b99cd3f4902, type: 3}
-      propertyPath: m_FlipX
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6218143083039659868, guid: 31573acaac91c974ea5d1b99cd3f4902, type: 3}
       propertyPath: m_Name
       value: Skeleton
-      objectReference: {fileID: 0}
-    - target: {fileID: 6218143083039659868, guid: 31573acaac91c974ea5d1b99cd3f4902, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -51531,21 +51523,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1418968276836960890, guid: e8ab3f62f77adca499e4424b8df6ed8b, type: 3}
-      propertyPath: m_FlipX
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2261381832355145645, guid: e8ab3f62f77adca499e4424b8df6ed8b, type: 3}
-      propertyPath: m_FlipX
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5081722831858225331, guid: e8ab3f62f77adca499e4424b8df6ed8b, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 5622807050978977546, guid: e8ab3f62f77adca499e4424b8df6ed8b, type: 3}
-      propertyPath: maxHealth
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7394277820787067897, guid: e8ab3f62f77adca499e4424b8df6ed8b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -51826,10 +51806,6 @@ PrefabInstance:
     - target: {fileID: 960617028663113060, guid: 525937cb22dc1024cacffe8e7aab4ed2, type: 3}
       propertyPath: m_Name
       value: Slime
-      objectReference: {fileID: 0}
-    - target: {fileID: 960617028663113060, guid: 525937cb22dc1024cacffe8e7aab4ed2, type: 3}
-      propertyPath: m_TagString
-      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 5167387020308335450, guid: 525937cb22dc1024cacffe8e7aab4ed2, type: 3}
       propertyPath: m_LocalPosition.x

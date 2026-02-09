@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 5597695185407315817}
   - component: {fileID: 2610687629014822490}
   - component: {fileID: 8631052106744134167}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Skeleton
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -303,7 +303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1
-  collisionOffset: 0
+  collisionOffset: 0.2
   visuals: {fileID: 8389427985926575244}
 --- !u!1 &6334191866946533871
 GameObject:

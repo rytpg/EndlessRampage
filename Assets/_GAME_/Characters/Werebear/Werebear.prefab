@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7852017648884195224}
   - component: {fileID: 9183982641839905404}
   - component: {fileID: 2116647466691932228}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Werebear
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -177,8 +177,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b48baafd5bae1634c9cc440526d5f8ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
-  collisionOffset: 0
+  moveSpeed: 1.2
+  collisionOffset: 0.2
   visuals: {fileID: 7469474214152385340}
 --- !u!1 &3749663074741138922
 GameObject:
@@ -189,7 +189,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7469474214152385340}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 4057948974118787401}
   - component: {fileID: 6670610694384967824}
   - component: {fileID: 1354717364574703799}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AttackHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -289,7 +289,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.1, y: 1.1}
+  m_Size: {x: 1.4, y: 1.2}
   m_EdgeRadius: 0
 --- !u!114 &1354717364574703799
 MonoBehaviour:
@@ -317,7 +317,7 @@ GameObject:
   - component: {fileID: 6685934405017524421}
   - component: {fileID: 8160283058677936572}
   - component: {fileID: 7408962722996058040}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Art
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -382,7 +382,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: -5004526510767300680, guid: 45ce97d20c1e9bc4cbea43472773ee3a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
