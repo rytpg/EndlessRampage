@@ -1,6 +1,9 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/*
+This script just sets the death screen to be active when you die
+*/
 public class DeathUI : MonoBehaviour
 {
     public GameObject deathPanel;

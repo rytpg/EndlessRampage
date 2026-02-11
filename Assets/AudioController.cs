@@ -1,6 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+/*
+This script handles the switching of the image of the volume button
+based on its state (muted / unmuted)
+*/
 public class AudioController : MonoBehaviour
 {
 

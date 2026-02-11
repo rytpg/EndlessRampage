@@ -3,6 +3,16 @@ using UnityEngine;
 using System.Collections;
 using Unity.VisualScripting;
 
+    /*
+    This script handles wave based enemy spawning.
+    It uses waves which have a time limit and a budget of points.
+    Each enemy has a cost value (points) and the spawner randomly generates a
+    wave using those costs/points, then spawns enemies evenly over the wave duration
+
+    The next wave starts when all enemies are dead & wave timer is done
+    the next wave starts
+    */
+    
 public class WaveSpawner : MonoBehaviour
 {
 
