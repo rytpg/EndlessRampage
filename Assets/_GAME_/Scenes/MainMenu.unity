@@ -1285,7 +1285,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1190392183}
   - component: {fileID: 1190392182}
-  - component: {fileID: 1190392180}
+  - component: {fileID: 1190392184}
   m_Layer: 0
   m_Name: Scripts
   m_TagString: Untagged
@@ -1293,22 +1293,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1190392180
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1190392179}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5782c9e6f572aee4aa0c3373836df0c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  musicSource: {fileID: 668842651}
-  buttonImage: {fileID: 1834950687}
-  unmutedSprite: {fileID: 8271085754937698864, guid: abadbc51331053745833808395b5c3f5, type: 3}
-  mutedSprite: {fileID: 9189458066416641540, guid: abadbc51331053745833808395b5c3f5, type: 3}
 --- !u!114 &1190392182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1336,6 +1320,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1190392184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1190392179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5782c9e6f572aee4aa0c3373836df0c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicSource: {fileID: 668842651}
+  buttonImage: {fileID: 1834950687}
+  unmutedSprite: {fileID: 8271085754937698864, guid: abadbc51331053745833808395b5c3f5, type: 3}
+  mutedSprite: {fileID: 9189458066416641540, guid: abadbc51331053745833808395b5c3f5, type: 3}
 --- !u!1 &1246239090
 GameObject:
   m_ObjectHideFlags: 0
@@ -1769,7 +1769,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1190392180}
+      - m_Target: {fileID: 1190392184}
         m_TargetAssemblyTypeName: AudioController, Assembly-CSharp
         m_MethodName: ToggleMusic
         m_Mode: 1

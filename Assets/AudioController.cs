@@ -14,6 +14,13 @@ public class AudioController : MonoBehaviour
     public Sprite unmutedSprite;
     public Sprite mutedSprite;
 
+    void OnEnable()
+    {
+        if(SaveMusic.Instance != null)
+        {
+            musicSource = SaveMusic.Instance.GetComponent<AudioSource>();
+        }
+    }
     private bool isMuted = false;
 
     public void ToggleMusic()
