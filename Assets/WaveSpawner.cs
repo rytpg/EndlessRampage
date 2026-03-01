@@ -27,6 +27,8 @@ public class WaveSpawner : MonoBehaviour
 
     public Transform[] spawnLocations;
 
+    public DDAController dda;
+
     private float waveTimer;
     private float spawnTimer;
     private float spawnInterval;
@@ -59,6 +61,8 @@ public class WaveSpawner : MonoBehaviour
 
         if (waveTimer <= 0f && enemiesToSpawn.Count == 0 && SpawnedEnemies.Count == 0)
         {
+            dda?.OnWaveEnd(currentWave); //calling on wave end before starting next wave
+
             currentWave++;
             StartWave(currentWave);
         }
@@ -74,6 +78,9 @@ public class WaveSpawner : MonoBehaviour
         spawnIndex = 0;
 
         enemiesToSpawn.Clear();
+
+        dda?.OnStartWave(waveNumber);
+
         GenerateEnemiesForWave(waveNumber, enemiesToSpawn);
 
         if(enemiesToSpawn.Count == 0)
@@ -108,8 +115,22 @@ public class WaveSpawner : MonoBehaviour
 
     void GenerateEnemiesForWave(int waveNumber, List<GameObject> output)
     {
-        int waveValue = waveNumber * pointsPerWave;
+        //int waveValue = waveNumber * pointsPerWave;
         
+        float multiplier = (dda != null) ? dda.difficultyMultiplier : 1f;
+        //Scaling points x wavenumber
+        int startingWaveValue = waveNumber * pointsPerWave;
+        //Points allocation after dda
+        int finalWaveValue = Mathf.RoundToInt(startingWaveValue * multiplier);
+        // what dda added (needed for logging)
+        int ddaDifference = finalWaveValue - startingWaveValue;
+        
+        Debug.Log($"Wave {waveNumber}, Base Points: {startingWaveValue}"+
+        $"Multiplier:{multiplier:F2}, Final Points: {finalWaveValue}"+
+        $"DDA Change: {ddaDifference}");
+
+        int waveValue = finalWaveValue;
+
         int maxEnemies = 50;
         int tries = 0;
         int maxTries = 300;

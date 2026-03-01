@@ -459,6 +459,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 310261033}
   m_CullTransparentMesh: 1
+--- !u!1 &441580165
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 441580167}
+  - component: {fileID: 441580166}
+  m_Layer: 0
+  m_Name: DdaController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &441580166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 441580165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4f4b11e408325a44a0ae96d551d58ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  difficultyMultiplier: 1
+  playerHealth: {fileID: 1938673182}
+--- !u!4 &441580167
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 441580165}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 57.29058, y: -10.7445965, z: -0.108221374}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &443774589
 GameObject:
   m_ObjectHideFlags: 0
@@ -51658,10 +51704,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5622807050978977546, guid: e8ab3f62f77adca499e4424b8df6ed8b, type: 3}
+      propertyPath: maxHealth
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5953267382644920931, guid: e8ab3f62f77adca499e4424b8df6ed8b, type: 3}
       propertyPath: deathPanel
       value: 
       objectReference: {fileID: 591271887}
+    - target: {fileID: 6132673868515292399, guid: e8ab3f62f77adca499e4424b8df6ed8b, type: 3}
+      propertyPath: moveSpeed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7394277820787067897, guid: e8ab3f62f77adca499e4424b8df6ed8b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 58.4
@@ -51857,6 +51911,7 @@ MonoBehaviour:
   - {fileID: 1437598637}
   - {fileID: 1996285410}
   - {fileID: 1078451063}
+  dda: {fileID: 441580166}
 --- !u!4 &1651662023
 Transform:
   m_ObjectHideFlags: 0
@@ -52413,3 +52468,4 @@ SceneRoots:
   - {fileID: 68756393}
   - {fileID: 1651662023}
   - {fileID: 27854857}
+  - {fileID: 441580167}
