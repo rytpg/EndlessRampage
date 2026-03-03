@@ -7,6 +7,13 @@ public class EnemyContactAttack : MonoBehaviour
     
     private float cooldownTimer = 0f;
 
+    private Collider2D attackCollider;
+
+    void Start()
+    {
+        attackCollider = GetComponent<Collider2D>();
+    }
+
 
     // Update is called once per frame
     void Update()
@@ -30,4 +37,11 @@ public class EnemyContactAttack : MonoBehaviour
             cooldownTimer = cooldown;
         }
     }
+
+    public void DisableAttack()
+    {
+        attackCollider.enabled = false;
+        enabled = false;
+    }
 }
+

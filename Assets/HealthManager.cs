@@ -28,5 +28,13 @@ public class HealthManager : MonoBehaviour
         }
     }
 
+    public void Heal(float amount)
+    {
+        if(dead) return;
+        //Makes sure it doesnt heal over max heal
+        currentHealth = Mathf.Min(maxHealth, currentHealth + amount);
+    }
+
+
     public float GetHealth() => currentHealth;
 }
