@@ -51708,6 +51708,34 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 5622807050978977546, guid: e8ab3f62f77adca499e4424b8df6ed8b, type: 3}
+      propertyPath: onHealthChange.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5622807050978977546, guid: e8ab3f62f77adca499e4424b8df6ed8b, type: 3}
+      propertyPath: onHealthChange.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5622807050978977546, guid: e8ab3f62f77adca499e4424b8df6ed8b, type: 3}
+      propertyPath: onHealthChange.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 591271885}
+    - target: {fileID: 5622807050978977546, guid: e8ab3f62f77adca499e4424b8df6ed8b, type: 3}
+      propertyPath: onHealthChange.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5622807050978977546, guid: e8ab3f62f77adca499e4424b8df6ed8b, type: 3}
+      propertyPath: onHealthChange.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UpdateUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 5622807050978977546, guid: e8ab3f62f77adca499e4424b8df6ed8b, type: 3}
+      propertyPath: onHealthChange.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerUI, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5622807050978977546, guid: e8ab3f62f77adca499e4424b8df6ed8b, type: 3}
+      propertyPath: onHealthChange.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5953267382644920931, guid: e8ab3f62f77adca499e4424b8df6ed8b, type: 3}
       propertyPath: deathPanel
       value: 
@@ -52455,6 +52483,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2115118422}
   m_CullTransparentMesh: 1
+--- !u!1001 &7851889832571772606
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8838166936030715652, guid: 244ed821d1cd2124d941cfa6347c1b0d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 55.062
+      objectReference: {fileID: 0}
+    - target: {fileID: 8838166936030715652, guid: 244ed821d1cd2124d941cfa6347c1b0d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -8.549
+      objectReference: {fileID: 0}
+    - target: {fileID: 8838166936030715652, guid: 244ed821d1cd2124d941cfa6347c1b0d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.10210987
+      objectReference: {fileID: 0}
+    - target: {fileID: 8838166936030715652, guid: 244ed821d1cd2124d941cfa6347c1b0d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8838166936030715652, guid: 244ed821d1cd2124d941cfa6347c1b0d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8838166936030715652, guid: 244ed821d1cd2124d941cfa6347c1b0d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8838166936030715652, guid: 244ed821d1cd2124d941cfa6347c1b0d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8838166936030715652, guid: 244ed821d1cd2124d941cfa6347c1b0d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8838166936030715652, guid: 244ed821d1cd2124d941cfa6347c1b0d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8838166936030715652, guid: 244ed821d1cd2124d941cfa6347c1b0d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175265431729059179, guid: 244ed821d1cd2124d941cfa6347c1b0d, type: 3}
+      propertyPath: m_Name
+      value: HealthPickup
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 244ed821d1cd2124d941cfa6347c1b0d, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -52469,3 +52554,4 @@ SceneRoots:
   - {fileID: 1651662023}
   - {fileID: 27854857}
   - {fileID: 441580167}
+  - {fileID: 7851889832571772606}

@@ -11,7 +11,7 @@ public class PlayerUI : MonoBehaviour
         slider.maxValue = playerHealth.maxHealth;
         slider.value = playerHealth.GetHealth();
 
-        playerHealth.onDamage.AddListener(UpdateUI);
+        playerHealth.onHealthChange.AddListener(UpdateUI);
         playerHealth.onDeath.AddListener(UpdateUI); //safety? shouldnt need it though since i have ondamage? but maybe for instantdeath just in case
         
     }

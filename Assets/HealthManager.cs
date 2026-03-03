@@ -9,6 +9,7 @@ public class HealthManager : MonoBehaviour
 
     public UnityEvent onDamage;
     public UnityEvent onDeath;
+    public UnityEvent onHealthChange;
 
     private void Awake()
     {
@@ -19,7 +20,9 @@ public class HealthManager : MonoBehaviour
     {
         if(dead) return;
         currentHealth -= amount;
+
         onDamage?.Invoke();
+        onHealthChange?.Invoke();
 
         if (currentHealth <= 0f)
         {
@@ -33,6 +36,7 @@ public class HealthManager : MonoBehaviour
         if(dead) return;
         //Makes sure it doesnt heal over max heal
         currentHealth = Mathf.Min(maxHealth, currentHealth + amount);
+        onHealthChange?.Invoke();
     }
 
 
