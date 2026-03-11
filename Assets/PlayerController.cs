@@ -10,9 +10,11 @@ public class PlayerController : MonoBehaviour
     public float collisionOffset = 0.05f;
     public ContactFilter2D movementFilter;
     public SwordAttack swordAttack;
+    public SwordAttack swordAttackHeavy;
 
     public float attackMovespeedMultiplier = 0.6f;
     private bool isAttacking = false;
+    private bool isAttackingHeavy = false;
     
     Vector2 movementInput;
     Rigidbody2D rb;
@@ -113,6 +115,11 @@ public class PlayerController : MonoBehaviour
         animator.SetTrigger("swordAttack");
     }
 
+    void OnHeavyAttack()
+    {
+        animator.SetTrigger("heavyAttack");
+    }
+
     public void SwordAttack()
     {
         isAttacking = true;
@@ -126,10 +133,33 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void SwordAttackHeavy()
+    {
+        isAttacking = true;
+        isAttackingHeavy = true;
+        LockMovement();
+
+        if(facingDirection == -1)
+        {
+            swordAttackHeavy.AttackLeft();
+        }
+        else
+        {
+            swordAttackHeavy.AttackRight();
+        }
+    }
+
     public void EndSwordAttack()
     {
         isAttacking = false;
         swordAttack.StopAttack();
+        swordAttackHeavy.StopAttack();
+
+        if (isAttackingHeavy)
+        {
+            UnlockMovement();
+            isAttackingHeavy = false;
+        }
     }
 
     public void LockMovement()

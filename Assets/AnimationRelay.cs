@@ -14,4 +14,5 @@ public class AnimationRelay : MonoBehaviour
 
     public void SwordAttack() => player.SwordAttack();
     public void EndSwordAttack() => player.EndSwordAttack();
+    public void SwordAttackHeavy() => player.SwordAttackHeavy();
 }
