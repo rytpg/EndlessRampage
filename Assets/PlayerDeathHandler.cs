@@ -9,6 +9,7 @@ public class PlayerDeathHandler : MonoBehaviour
 
     public void OnPlayerDeath()
     {
+        StatTracker.instance.CreateCSV();
         deathPanel.ShowDeathScreen();
     }
 }

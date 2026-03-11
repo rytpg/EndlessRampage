@@ -61,6 +61,8 @@ public class WaveSpawner : MonoBehaviour
 
         if (waveTimer <= 0f && enemiesToSpawn.Count == 0 && SpawnedEnemies.Count == 0)
         {
+            //saving wave stats before starting new wave or ending wave
+            StatTracker.instance.SaveWaveLog(currentWave);
             dda?.OnWaveEnd(currentWave); //calling on wave end before starting next wave
 
             currentWave++;
@@ -72,6 +74,8 @@ public class WaveSpawner : MonoBehaviour
 
     void StartWave(int waveNumber)
     {
+        StatTracker.instance.ResetStartOfWave();
+        
         waveActive = true;
         waveTimer = waveDuration;
         spawnTimer = 0f;
@@ -110,6 +114,9 @@ public class WaveSpawner : MonoBehaviour
 
         GameObject enemy = Instantiate(prefab, spawn.position, Quaternion.identity);
         SpawnedEnemies.Add(enemy);
+
+        HealthManager health = enemy.GetComponent<HealthManager>();
+        health.onDeath.AddListener( () => StatTracker.instance.LogEnemyKilled());
 
     }
 

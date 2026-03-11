@@ -10,6 +10,9 @@ public class PlayerController : MonoBehaviour
     public float collisionOffset = 0.05f;
     public ContactFilter2D movementFilter;
     public SwordAttack swordAttack;
+
+    public float attackMovespeedMultiplier = 0.6f;
+    private bool isAttacking = false;
     
     Vector2 movementInput;
     Rigidbody2D rb;
@@ -72,15 +75,20 @@ public class PlayerController : MonoBehaviour
 
     private bool TryMove(Vector2 direction) {
         if(direction != Vector2.zero) {
+
+            float multiplier = isAttacking ? attackMovespeedMultiplier : 1f;
+            float finalSpeed = moveSpeed * multiplier;
+
+
             // Check for potential collisions
             int count = rb.Cast(
                 direction, // X and Y values between -1 and 1 that represent the direction from the body to look for collisions
                 movementFilter, // The settings that determine where a collision can occur on such as layers to collide with
                 castCollisions, // List of collisions to store the found collisions into after the Cast is finished
-                moveSpeed * Time.fixedDeltaTime + collisionOffset); // The amount to cast equal to the movement plus an offset
+                finalSpeed * Time.fixedDeltaTime + collisionOffset); // The amount to cast equal to the movement plus an offset
 
             if(count == 0){
-                rb.MovePosition(rb.position + direction * moveSpeed * Time.fixedDeltaTime);
+                rb.MovePosition(rb.position + direction * finalSpeed * Time.fixedDeltaTime);
                 return true;
             } else {
                 return false;
@@ -107,7 +115,7 @@ public class PlayerController : MonoBehaviour
 
     public void SwordAttack()
     {
-        LockMovement();
+        isAttacking = true;
         if(facingDirection == -1)
         {
             swordAttack.AttackLeft();
@@ -120,7 +128,7 @@ public class PlayerController : MonoBehaviour
 
     public void EndSwordAttack()
     {
-        UnlockMovement();
+        isAttacking = false;
         swordAttack.StopAttack();
     }
 

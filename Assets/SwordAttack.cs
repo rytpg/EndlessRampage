@@ -19,6 +19,8 @@ public class SwordAttack : MonoBehaviour
     {
         swordCollider.enabled = true;
         transform.localPosition = rightLocalOffset;
+        StatTracker.instance.LogAttackAttempt();
+
     }
 
     public void AttackLeft()
@@ -26,6 +28,7 @@ public class SwordAttack : MonoBehaviour
         swordCollider.enabled = true;
         transform.localPosition =
             new Vector2(-rightLocalOffset.x, rightLocalOffset.y);
+        StatTracker.instance.LogAttackAttempt();
     }
 
     public void StopAttack()
@@ -40,6 +43,8 @@ public class SwordAttack : MonoBehaviour
         HealthManager health = collision.GetComponent<HealthManager>();
         if(health != null)
         {
+            StatTracker.instance.LogAttackHit();
+            StatTracker.instance.LogDamageDealt(damage);
             health.TakeDamage(damage);
         }
 

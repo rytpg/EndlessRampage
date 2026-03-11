@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0771aed3804905041a0d8299055a3c43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 15
+  moveSpeed: 7
   collisionOffset: 0.05
   movementFilter:
     useTriggers: 0
@@ -190,6 +190,7 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   swordAttack: {fileID: 3093835683703382969}
+  attackMovespeedMultiplier: 0.6
   visuals: {fileID: 3899932396508566711}
 --- !u!50 &2711460448115313022
 Rigidbody2D:
