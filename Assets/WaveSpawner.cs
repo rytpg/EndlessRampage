@@ -36,6 +36,11 @@ public class WaveSpawner : MonoBehaviour
 
     private bool waveActive;
 
+
+    //Variables for logging
+    private float timeSeriesClock;
+    private float timeSeriesInterval = 0.5f;
+
     void Start()
     {
         StartWave(currentWave);
@@ -53,6 +58,8 @@ public class WaveSpawner : MonoBehaviour
         waveTimer -= Time.deltaTime;
         spawnTimer -= Time.deltaTime;
 
+        timeSeriesClock -= Time.deltaTime;
+
         if (spawnTimer <= 0f && enemiesToSpawn.Count > 0)
         {
             SpawnNext();
@@ -68,6 +75,12 @@ public class WaveSpawner : MonoBehaviour
             currentWave++;
             StartWave(currentWave);
         }
+
+        if (timeSeriesClock <= 0f)
+        {
+            LogSnapshot();
+            timeSeriesClock = timeSeriesInterval;
+        }
     }
 
 
@@ -80,6 +93,9 @@ public class WaveSpawner : MonoBehaviour
         waveTimer = waveDuration;
         spawnTimer = 0f;
         spawnIndex = 0;
+
+        //resets the clock when a wave stars
+        timeSeriesClock = timeSeriesInterval;
 
         enemiesToSpawn.Clear();
 
@@ -164,7 +180,37 @@ public class WaveSpawner : MonoBehaviour
         }
         Debug.Log($"Wave {waveNumber}, Spawning {output.Count} enemies");
     }
+
+
+
+    //logging (for use with StatTracker)
+    void LogSnapshot()
+    {
+        float currentHealth = 0f;
+        float healthPercentage = 0f;
+        if (dda.playerHealth != null)
+        {
+            currentHealth = dda.playerHealth.GetHealth();
+
+            if (dda.playerHealth.maxHealth > 0f)
+            {
+                healthPercentage = currentHealth / dda.playerHealth.maxHealth;
+            }
+        }
+
+        int enemiesAlive = SpawnedEnemies.Count;
+        float difficulty = dda.difficultyMultiplier;
+
+        StatTracker.instance.LogSnapshot(
+            Time.time, currentWave,
+            currentHealth, healthPercentage,
+            enemiesAlive, difficulty
+        );
+    
+    }
 }
+
+
 
 
 

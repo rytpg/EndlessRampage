@@ -26,7 +26,19 @@ public class StatTracker : MonoBehaviour
         public int enemiesKilledThisWave;
     }
 
+    public class TimeSeriesLog
+    {
+        public float timeStamp;
+        public int waveNumber;
+        public float playerHealth;
+        public float playerHealthPercentage;
+        public int enemiesAlive;
+        public int enemiesKilledThisWave;
+        public float difficultyMultiplier;
+    }
+
     public List<WaveLog> waveLogs = new List<WaveLog>();
+    public List<TimeSeriesLog> timeSeriesLogs = new List<TimeSeriesLog>();
 
 
     //Combat Info
@@ -90,6 +102,24 @@ public void SaveWaveLog(int waveNumber)
         waveLogs.Add(waveLog);
     }
 
+
+    public void LogSnapshot(
+    float timeStamp, int waveNumber,
+    float playerHealth, float playerHealthPercentage,
+    int enemiesAlive, float difficultyMultiplier
+    )
+    {
+        TimeSeriesLog log = new TimeSeriesLog();
+        log.timeStamp = timeStamp;
+        log.waveNumber = waveNumber;
+        log.playerHealth = playerHealth;
+        log.playerHealthPercentage = playerHealthPercentage;
+        log.enemiesAlive = enemiesAlive;
+        log.difficultyMultiplier = difficultyMultiplier;
+
+        timeSeriesLogs.Add(log);
+    }
+
 public void CreateCSV()
     {
         string csvName = $"Log_{DateTime.Now:dd-MM--yyyy-HH--mm--ss}.csv";
@@ -102,9 +132,26 @@ public void CreateCSV()
 
             csvWriter.WriteLine();
 
+            csvWriter.WriteLine("WaveNumber,EnemiesKilledThisWave");
+
             foreach (WaveLog waveLog in waveLogs)
             {
                 csvWriter.WriteLine($"{waveLog.waveNumber},{waveLog.enemiesKilledThisWave}");
+            }
+
+            csvWriter.WriteLine();
+            csvWriter.WriteLine("Time Series Log");
+            csvWriter.WriteLine("Timestamp,WaveNumber,PlayerHealth,PlayerHealth%,AliveEnemies,DifficultyMultiplier");
+            
+            foreach (TimeSeriesLog log in timeSeriesLogs)
+            {
+                csvWriter.WriteLine
+                (
+                    $"{log.timeStamp:F2}," + $"{log.waveNumber}," +
+                    $"{log.playerHealth}," + $"{log.playerHealthPercentage}," +
+                    $"{log.enemiesAlive}," + $"{log.difficultyMultiplier}"
+                );
+            
             }
         }
         Debug.Log("CSV saved to: " + path);

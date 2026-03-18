@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public SwordAttack swordAttackHeavy;
 
     public float attackMovespeedMultiplier = 0.6f;
+    public float heavyAttackMovespeedMultiplier = 0.25f;
     private bool isAttacking = false;
     private bool isAttackingHeavy = false;
     
@@ -78,7 +79,15 @@ public class PlayerController : MonoBehaviour
     private bool TryMove(Vector2 direction) {
         if(direction != Vector2.zero) {
 
-            float multiplier = isAttacking ? attackMovespeedMultiplier : 1f;
+            float multiplier = 1f;
+            if (isAttackingHeavy)
+            {
+                multiplier = heavyAttackMovespeedMultiplier;
+            }
+            else if (isAttacking)
+            {
+                multiplier = attackMovespeedMultiplier;
+            }
             float finalSpeed = moveSpeed * multiplier;
 
 
@@ -137,8 +146,6 @@ public class PlayerController : MonoBehaviour
     {
         isAttacking = true;
         isAttackingHeavy = true;
-        LockMovement();
-
         if(facingDirection == -1)
         {
             swordAttackHeavy.AttackLeft();
@@ -157,7 +164,6 @@ public class PlayerController : MonoBehaviour
 
         if (isAttackingHeavy)
         {
-            UnlockMovement();
             isAttackingHeavy = false;
         }
     }
