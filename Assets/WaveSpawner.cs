@@ -200,11 +200,12 @@ public class WaveSpawner : MonoBehaviour
 
         int enemiesAlive = SpawnedEnemies.Count;
         float difficulty = dda.difficultyMultiplier;
+        float healthPickupDropChance = dda.healthPickupDropChance;
 
         StatTracker.instance.LogSnapshot(
             Time.time, currentWave,
             currentHealth, healthPercentage,
-            enemiesAlive, difficulty
+            enemiesAlive, difficulty, healthPickupDropChance
         );
     
     }

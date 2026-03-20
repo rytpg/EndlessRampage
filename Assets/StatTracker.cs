@@ -35,6 +35,7 @@ public class StatTracker : MonoBehaviour
         public int enemiesAlive;
         public int enemiesKilledThisWave;
         public float difficultyMultiplier;
+        public float healthPickupDropChance;
     }
 
     public List<WaveLog> waveLogs = new List<WaveLog>();
@@ -106,7 +107,8 @@ public void SaveWaveLog(int waveNumber)
     public void LogSnapshot(
     float timeStamp, int waveNumber,
     float playerHealth, float playerHealthPercentage,
-    int enemiesAlive, float difficultyMultiplier
+    int enemiesAlive, float difficultyMultiplier,
+    float healthPickupDropChance
     )
     {
         TimeSeriesLog log = new TimeSeriesLog();
@@ -115,7 +117,9 @@ public void SaveWaveLog(int waveNumber)
         log.playerHealth = playerHealth;
         log.playerHealthPercentage = playerHealthPercentage;
         log.enemiesAlive = enemiesAlive;
+        log.enemiesKilledThisWave = enemiesKilledThisWave;
         log.difficultyMultiplier = difficultyMultiplier;
+        log.healthPickupDropChance = healthPickupDropChance;
 
         timeSeriesLogs.Add(log);
     }
@@ -141,7 +145,7 @@ public void CreateCSV()
 
             csvWriter.WriteLine();
             csvWriter.WriteLine("Time Series Log");
-            csvWriter.WriteLine("Timestamp,WaveNumber,PlayerHealth,PlayerHealth%,AliveEnemies,DifficultyMultiplier");
+            csvWriter.WriteLine("Timestamp,WaveNumber,PlayerHealth,PlayerHealth%,AliveEnemies,EnemiesKilledThisWave,DifficultyMultiplier,HealthPickupDropChance");
             
             foreach (TimeSeriesLog log in timeSeriesLogs)
             {
@@ -149,7 +153,8 @@ public void CreateCSV()
                 (
                     $"{log.timeStamp:F2}," + $"{log.waveNumber}," +
                     $"{log.playerHealth}," + $"{log.playerHealthPercentage}," +
-                    $"{log.enemiesAlive}," + $"{log.difficultyMultiplier}"
+                    $"{log.enemiesAlive}," + $"{log.enemiesKilledThisWave}," +
+                    $"{log.difficultyMultiplier}," + $"{log.healthPickupDropChance}"
                 );
             
             }

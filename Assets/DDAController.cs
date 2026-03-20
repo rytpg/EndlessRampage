@@ -4,6 +4,9 @@ using UnityEngine;
 public class DDAController : MonoBehaviour
 {
     public float difficultyMultiplier = 1.0f;
+    [Range(0f,1f)] public float healthPickupDropChance = 0.5f;
+    [Range(0f,1f)] public float minHealthPickupDropChance = 0.15f;
+    [Range(0f,1f)] public float maxHealthPickupDropChance = 0.75f;
 
     public HealthManager playerHealth;
 
@@ -26,6 +29,8 @@ public class DDAController : MonoBehaviour
         {
             prevHealth = playerHealth.GetHealth();
         }
+
+        UpdateHealthPickupDropChance();
     }
 
     void Update()
@@ -38,6 +43,7 @@ public class DDAController : MonoBehaviour
             waveDamageTaken += (prevHealth - currentHealth);
         }
         prevHealth = currentHealth;
+        UpdateHealthPickupDropChance();
     }
 
     public void OnStartWave(int waveNumber)
@@ -51,6 +57,8 @@ public class DDAController : MonoBehaviour
         {
             prevHealth = playerHealth.GetHealth();
         }
+
+        UpdateHealthPickupDropChance();
     }
 
     public void OnWaveEnd(int waveNumber)
@@ -79,6 +87,21 @@ public class DDAController : MonoBehaviour
 
         Debug.Log($"Wave {waveNumber} end, Damage = {waveDamageTaken}, HP = {healthPercentage}, multiplier = {difficultyMultiplier}");
     
+    }
+
+    void UpdateHealthPickupDropChance()
+    {
+        if (playerHealth == null || playerHealth.maxHealth <= 0f)
+        {
+            return;
+        }
+
+        float healthPercentage = playerHealth.GetHealth() / playerHealth.maxHealth;
+
+        //1 = struggling hard on health, 0 when health
+        float struggle = 1f - healthPercentage;
+
+        healthPickupDropChance = Mathf.Lerp(minHealthPickupDropChance,maxHealthPickupDropChance,struggle);
     }
 
 }
