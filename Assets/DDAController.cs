@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class DDAController : MonoBehaviour
 {
+
+    [Range(0.5f,5f)] public float baseDifficulty = 1.0f;
     public float difficultyMultiplier = 1.0f;
     [Range(0f,1f)] public float healthPickupDropChance = 0.5f;
     [Range(0f,1f)] public float minHealthPickupDropChance = 0.15f;
@@ -79,12 +81,22 @@ public class DDAController : MonoBehaviour
         // 20% +- difficulty swing
         float target = Mathf.Lerp(0.6f, 1.6f, score);
 
+        float oldDifficulty = difficultyMultiplier;
+
         //smoothing, so it doesnt jump
         difficultyMultiplier = Mathf.Lerp(difficultyMultiplier, target, 0.35f);
 
         //cant go below 0.6 difficulty or above 1.5, make these fields later
         difficultyMultiplier = Mathf.Clamp(difficultyMultiplier, 0.6f, 1.5f);
 
+        StatTracker.instance?.LogDDAEvent(
+            Time.time,
+            waveNumber,
+            waveDamageTaken,
+            healthPercentage,
+            score,
+            oldDifficulty,
+            difficultyMultiplier);
         Debug.Log($"Wave {waveNumber} end, Damage = {waveDamageTaken}, HP = {healthPercentage}, multiplier = {difficultyMultiplier}");
     
     }

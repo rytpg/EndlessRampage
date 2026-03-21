@@ -39,7 +39,7 @@ public class WaveSpawner : MonoBehaviour
 
     //Variables for logging
     private float timeSeriesClock;
-    private float timeSeriesInterval = 0.5f;
+    private float timeSeriesInterval = 0.01f;
 
     void Start()
     {
@@ -140,7 +140,10 @@ public class WaveSpawner : MonoBehaviour
     {
         //int waveValue = waveNumber * pointsPerWave;
         
-        float multiplier = (dda != null) ? dda.difficultyMultiplier : 1f;
+        //float multiplier = (dda != null) ? dda.difficultyMultiplier : 1f;
+        
+        float multiplier = 1f;
+        multiplier = dda.baseDifficulty * dda.difficultyMultiplier;
         //Scaling points x wavenumber
         int startingWaveValue = waveNumber * pointsPerWave;
         //Points allocation after dda

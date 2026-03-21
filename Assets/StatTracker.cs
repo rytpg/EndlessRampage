@@ -38,9 +38,39 @@ public class StatTracker : MonoBehaviour
         public float healthPickupDropChance;
     }
 
+
+    public class DDAEvent
+    {
+        public float timeStamp;
+        public int waveNumber;
+        public float damageTaken;
+        public float healthPercentage;
+        public float performanceScore;
+        public float oldDifficulty;
+        public float newDifficulty;
+    }
+
+    public class DamageEvent
+    {
+        public float timeStamp;
+        public float damageAmount;
+        public float playerHealthBefore;
+        public float playerHealthAfter;
+    }
+
+    public class HealEvent
+    {
+        public float timeStamp;
+        public float healAmount;
+        public float healthBefore;
+        public float healthAfter;
+    }
+
     public List<WaveLog> waveLogs = new List<WaveLog>();
     public List<TimeSeriesLog> timeSeriesLogs = new List<TimeSeriesLog>();
-
+    public List<DDAEvent> ddaEvents = new List<DDAEvent>();
+    public List<DamageEvent> damageEvents = new List<DamageEvent>();
+    public List<HealEvent> healEvents = new List<HealEvent>();
 
     //Combat Info
     public float totalDamageDealtByPlayer;
@@ -124,6 +154,53 @@ public void SaveWaveLog(int waveNumber)
         timeSeriesLogs.Add(log);
     }
 
+
+
+    public void LogDDAEvent(
+        float timeStamp,
+        int waveNumber,
+        float damageTaken,
+        float healthPercentage,
+        float performanceScore,
+        float oldDifficulty,
+        float newDifficulty
+    )
+    {
+        DDAEvent ddaEvent = new DDAEvent();
+        ddaEvent.timeStamp = timeStamp;
+        ddaEvent.waveNumber = waveNumber;
+        ddaEvent.damageTaken = damageTaken;
+        ddaEvent.healthPercentage = healthPercentage;
+        ddaEvent.performanceScore = performanceScore;
+        ddaEvent.oldDifficulty = oldDifficulty;
+        ddaEvent.newDifficulty = newDifficulty;
+
+        ddaEvents.Add(ddaEvent);
+    }
+
+
+    public void LogDamageEvent(float damage, float healthBefore, float healthAfter)
+    {
+        DamageEvent damageEvent = new DamageEvent();
+        damageEvent.timeStamp = Time.time;
+        damageEvent.damageAmount = damage;
+        damageEvent.playerHealthBefore = healthBefore;
+        damageEvent.playerHealthAfter = healthAfter;
+
+        damageEvents.Add(damageEvent);
+    }
+
+    public void LogHealEvent(float amount, float healthBefore, float healthAfter)
+    {
+        HealEvent healEvent = new HealEvent();
+        healEvent.timeStamp = Time.time;
+        healEvent.healAmount = amount;
+        healEvent.healthBefore = healthBefore;
+        healEvent.healthAfter = healthAfter;
+
+        healEvents.Add(healEvent);
+    }
+
 public void CreateCSV()
     {
         string csvName = $"Log_{DateTime.Now:dd-MM--yyyy-HH--mm--ss}.csv";
@@ -156,8 +233,46 @@ public void CreateCSV()
                     $"{log.enemiesAlive}," + $"{log.enemiesKilledThisWave}," +
                     $"{log.difficultyMultiplier}," + $"{log.healthPickupDropChance}"
                 );
-            
             }
+
+            csvWriter.WriteLine();
+            csvWriter.WriteLine("Damage Events");
+            csvWriter.WriteLine("Timestamp,DamageAmount,HealthBefore,HealthAfter");
+            foreach (DamageEvent damageEvent in damageEvents)
+            {
+                csvWriter.WriteLine(
+                    $"{damageEvent.timeStamp:F2}," + $"{damageEvent.damageAmount}," +
+                    $"{damageEvent.playerHealthBefore},"+ $"{damageEvent.playerHealthAfter}"
+                );
+            }
+
+            csvWriter.WriteLine();
+            csvWriter.WriteLine("Heal Events");
+            csvWriter.WriteLine("Timestamp,HealAMount,HealthBefore,HealthAfter");
+            foreach (HealEvent healEvent in healEvents)
+            {
+                csvWriter.WriteLine(
+                    $"{healEvent.timeStamp:F2}," + $"{healEvent.healAmount}," +
+                    $"{healEvent.healthBefore},"+ $"{healEvent.healthAfter}"
+                );
+            }
+
+            csvWriter.WriteLine();
+            csvWriter.WriteLine("DDA Events");
+            csvWriter.WriteLine("Timestamp,Wave,DamageTaken,Health%,PerformanceScore,OldDifficulty,NewDifficulty");
+            foreach (DDAEvent ddaEvent in ddaEvents)
+            {
+                csvWriter.WriteLine(
+                    $"{ddaEvent.timeStamp:F2}," + $"{ddaEvent.waveNumber}," +
+                    $"{ddaEvent.damageTaken},"+ $"{ddaEvent.healthPercentage}," +
+                    $"{ddaEvent.performanceScore}," + $"{ddaEvent.oldDifficulty},"+
+                    $"{ddaEvent.newDifficulty}"
+                );
+            }
+
+
+
+
         }
         Debug.Log("CSV saved to: " + path);
     }

@@ -703,7 +703,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4f4b11e408325a44a0ae96d551d58ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseDifficulty: 4
   difficultyMultiplier: 1
+  healthPickupDropChance: 0.5
+  minHealthPickupDropChance: 0.15
+  maxHealthPickupDropChance: 0.75
   playerHealth: {fileID: 1938673182}
 --- !u!4 &441580167
 Transform:
@@ -143928,7 +143932,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5622807050978977546, guid: e8ab3f62f77adca499e4424b8df6ed8b, type: 3}
       propertyPath: maxHealth
-      value: 9999
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5622807050978977546, guid: e8ab3f62f77adca499e4424b8df6ed8b, type: 3}
       propertyPath: onHealthChange.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -153711,7 +153715,7 @@ MonoBehaviour:
   manualDebugFloorRoof: 0
   showSearchTree: 0
   unwalkableNodeDebugSize: 0.3
-  logPathResults: 1
+  logPathResults: 0
   maxNearestNodeDistance: 100
   scanOnStartup: 1
   fullGetNearestSearch: 0
@@ -153730,7 +153734,7 @@ MonoBehaviour:
   heuristic: 2
   heuristicScale: 1
   threadCount: 1
-  maxFrameTime: 1
+  maxFrameTime: 10
   batchGraphUpdates: 0
   graphUpdateBatchingInterval: 0.2
   euclideanEmbedding:
